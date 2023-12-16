@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [personName, setPersonName] = useState("");
+  const [isFetching, setIsFetching] = useState(true);
+
+  useEffect(() => {
+    const getStarWarsPeople = async () => {
+      try {
+        const response = await fetch("https://swapi.dev/api/people/1");
+        setIsFetching(false);
+
+        if (response.ok) {
+          const json = await response.json();
+          setPersonName(json.name);
+        }
+      } catch (error) {
+        console.log(error);
+        setIsFetching(false);
+      }
+    };
+    getStarWarsPeople();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Star Wars</h1>
+      {isFetching ? <p>Fetching</p> : <h1>{personName}</h1>}
     </div>
   );
 }
