@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { useState, useEffect } from "react";
 
-function App() {
+const App: React.FC = () => {
   const [personName, setPersonName] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
@@ -25,11 +25,18 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <h1>Star Wars</h1>
-      {isFetching ? <p>Fetching</p> : <h1>{personName}</h1>}
-    </div>
+    <>
+      <div className="app">
+        <h1>Star Wars:Testing API Calls</h1>
+
+        {isFetching ? (
+          <p>Fetching</p>
+        ) : (
+          <h1>{personName}...you're being tested</h1>
+        )}
+      </div>
+    </>
   );
-}
+};
 
 export default App;
