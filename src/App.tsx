@@ -9,14 +9,14 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const getStarWarsPeople = async () => {
-      // let message = "";
-
       try {
         const response = await fetch("https://swapi.dev/api/people/1");
         setIsFetching(false);
 
         if (!response.ok) {
           if (response.status === 418) setErrMessage("I'm a tea pot 🫖, silly");
+          if (response.status === 500)
+            setErrMessage("Oops... something went wrong, try again 🤕");
         }
         const json = await response.json();
         setPersonName(json.name);

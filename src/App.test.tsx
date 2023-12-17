@@ -28,7 +28,7 @@ test("Renders 1st person name", async () => {
   expect(characterElement).toBeInTheDocument();
 });
 
-test("Handling 418 Error message", async () => {
+test("Handles 418 status code", async () => {
   server.use(
     rest.get("https://swapi.dev/api/people/1", (req, res, ctx) => {
       return res(ctx.status(418));
@@ -36,5 +36,18 @@ test("Handling 418 Error message", async () => {
   );
   render(<App />);
   const errorMsgElement = await screen.findByText("I'm a tea pot 🫖, silly");
+  expect(errorMsgElement).toBeInTheDocument();
+});
+
+test("Handles 500 status code", async () => {
+  server.use(
+    rest.get("https://swapi.dev/api/people/1", (req, res, ctx) => {
+      return res(ctx.status(500));
+    })
+  );
+  render(<App />);
+  const errorMsgElement = await screen.findByText(
+    "Oops... something went wrong, try again 🤕"
+  );
   expect(errorMsgElement).toBeInTheDocument();
 });
