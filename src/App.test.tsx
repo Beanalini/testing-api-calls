@@ -27,3 +27,14 @@ test("Renders 1st person name", async () => {
   );
   expect(characterElement).toBeInTheDocument();
 });
+
+test("Handling 418 Error message", async () => {
+  server.use(
+    rest.get("https://swapi.dev/api/people/1", (req, res, ctx) => {
+      return res(ctx.status(418));
+    })
+  );
+  render(<App />);
+  const errorMsgElement = await screen.findByText("I'm a tea pot 🫖, silly");
+  expect(errorMsgElement).toBeInTheDocument();
+});

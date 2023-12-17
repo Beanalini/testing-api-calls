@@ -5,17 +5,21 @@ import { useState, useEffect } from "react";
 const App: React.FC = () => {
   const [personName, setPersonName] = useState("");
   const [isFetching, setIsFetching] = useState(true);
+  const [errMessage, setErrMessage] = useState("");
 
   useEffect(() => {
     const getStarWarsPeople = async () => {
+      // let message = "";
+
       try {
         const response = await fetch("https://swapi.dev/api/people/1");
         setIsFetching(false);
 
-        if (response.ok) {
-          const json = await response.json();
-          setPersonName(json.name);
+        if (!response.ok) {
+          if (response.status === 418) setErrMessage("I'm a tea pot 🫖, silly");
         }
+        const json = await response.json();
+        setPersonName(json.name);
       } catch (error) {
         console.log(error);
         setIsFetching(false);
@@ -32,8 +36,9 @@ const App: React.FC = () => {
         {isFetching ? (
           <p>Fetching</p>
         ) : (
-          <h1>{personName}...you're being tested</h1>
+          <h2>{personName}...you're being tested</h2>
         )}
+        {errMessage && <h3>{errMessage}</h3>}
       </div>
     </>
   );
