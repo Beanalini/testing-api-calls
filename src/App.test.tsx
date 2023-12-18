@@ -22,9 +22,7 @@ test("renders the heading h1", () => {
 
 test("Renders 1st person name", async () => {
   render(<App />);
-  const characterElement = await screen.findByText(
-    /Luke Skywalker...you're being tested/i
-  );
+  const characterElement = await screen.findByText(/Luke Skywalker/i);
   expect(characterElement).toBeInTheDocument();
 });
 

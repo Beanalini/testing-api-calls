@@ -1,3 +1,25 @@
 .app {
+  flex-flow: flex column;
   text-align: center;
+  margin-top: 10rem;
+}
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+.person-name {
+  color: crimson;
+  font-size: 3rem;
+}
+
+.loading {
+  font-size: 1.5rem;
+  color: blue;
+}
+.yoda {
+  width: 100px;
+  height: 100px;
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useState, useEffect } from "react";
+import yoda from "./assets/yoda.png";
 
 const App: React.FC = () => {
   const [personName, setPersonName] = useState("");
@@ -34,9 +35,15 @@ const App: React.FC = () => {
         <h1>Star Wars:Testing API Calls</h1>
 
         {isFetching ? (
-          <p>Fetching</p>
+          <>
+            <p className="loading">Fetching Data</p>
+            <img className="yoda" src={yoda} alt="yoda caricature" />
+          </>
         ) : (
-          <h2>{personName}...you're being tested</h2>
+          <h2>
+            <span className="person-name">{personName}</span>...you're being
+            tested!
+          </h2>
         )}
         {errMessage && <h3>{errMessage}</h3>}
       </div>
