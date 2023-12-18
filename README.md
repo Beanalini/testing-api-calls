@@ -2,9 +2,7 @@
 
 ## Description
 
-This project creates an App from scratch using [Create React App](https://github.com/facebook/create-react-app) that makes a Get request to the Star Wars [Swapi](https://swapi.dev/)endpoint and displays the title of the first person returned from the API endpoint. The main aim of this projects is to create a mock server and test that the data being returned is rendered correctly.
-
-bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project creates an App from scratch using [Create React App](https://github.com/facebook/create-react-app) that makes a Get request to the Star Wars [Swapi](https://swapi.dev/) endpoint and displays the title of the first person returned from the API endpoint. The main aim of this projects is to create a mock server and test that the data being returned is rendered correctly.
 
 ## Project Requirements
 
@@ -15,7 +13,7 @@ bootstrapped with [Create React App](https://github.com/facebook/create-react-ap
 - Write a test that checks your component displays an error message saying "Oops... something went wrong, try again 🤕" if the API returns Status Code 500 (Internal Server Error: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500 ).
 - Write another test checking your component displays an error message saying "418 I'm a tea pot 🫖, silly" in the scenario of the API returning Status Code 418 (I’m a tea pot: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418 )
 
-## Installation
+## Installation & Usage
 
 After forking and cloning this repo, follow the instructions below to install the application:
 
@@ -23,15 +21,9 @@ Install dependencies:
 
            npm i
 
-To run application tests:
+`npm test`
 
-            npm test
-
-To run the application
-
-            npm start
-
-## Usage
+Launches the test runner in the interactive watch mode.
 
 In the project directory, you can run:
 
@@ -39,10 +31,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-         `npm test`
-
-Launches the test runner in the interactive watch mode.
 
 ### Technologies & Dependencies
 
